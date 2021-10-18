@@ -1,0 +1,87 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "name": "Products",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "minLength": 10,
+      "maxLength": 74
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "excerpt": {
+      "type": "richtext",
+      "required": true
+    },
+    "thumbnail": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "hero": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "saleprice": {
+      "type": "decimal",
+      "required": false
+    },
+    "instock": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "onsale": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "published": {
+      "type": "datetime",
+      "required": true,
+      "unique": true
+    },
+    "category": {
+      "via": "products",
+      "model": "category"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
